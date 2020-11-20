@@ -1,0 +1,11 @@
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\bin\Debug\TemperTestingBayes.exe.config
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\bin\Debug\TemperTestingBayes.exe
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\bin\Debug\TemperTestingBayes.pdb
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\obj\Debug\TemperTestingBayes.csprojAssemblyReference.cache
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\obj\Debug\TemperTestingBayes.MainForm.resources
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\obj\Debug\TemperTestingBayes.MenuForm.resources
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\obj\Debug\TemperTestingBayes.Properties.Resources.resources
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\obj\Debug\TemperTestingBayes.csproj.GenerateResource.cache
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\obj\Debug\TemperTestingBayes.csproj.CoreCompileInputs.cache
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\obj\Debug\TemperTestingBayes.exe
+C:\Users\Root\source\repos\TemperTestingBayes\TemperTestingBayes\obj\Debug\TemperTestingBayes.pdb
