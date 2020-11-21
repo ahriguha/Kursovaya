@@ -2,6 +2,7 @@
 {
     partial class MenuForm
     {
+
         /// <summary>
         /// Обязательная переменная конструктора.
         /// </summary>

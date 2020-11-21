@@ -8,6 +8,7 @@ namespace TemperTestingBayes
 {
     static class Program
     {
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
