@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -86,6 +87,26 @@ namespace TemperTestingBayes
                 }
             }
         }
+
+        public void setAiTestPanel()
+        {
+            if (!testIsRunning)
+            {
+                panelMain.Controls.Clear();
+                List<Button> infoButtons = GetInfoButtons();
+                //buttonInf.Click += new EventHandler(this.setInfoButtons);                
+                for (int i = 0; i < 4; i++)
+                {
+                    infoButtons[i].Click += (object sender, EventArgs e) =>
+                    showInfo(int.Parse((sender as Button).Name));
+                }
+                foreach (Button bt in infoButtons)
+                {
+                    panelMain.Controls.Add(bt);
+                }
+            }
+        }
+
 
         private List<Button> GetInfoButtons()
         {

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -41,6 +42,16 @@ namespace TemperTestingBayes
             mainForm.setInfoPanel();
         }
 
+        private void buttonAiTest_Click(object sender, EventArgs e)
+        {
+            if (!mainForm.Visible)
+            {
+                mainForm.Show();
+                mainForm.Location = new Point(Location.X + 200, Location.Y);
+            }
+            mainForm.setAiTestPanel();
+        }
+
         private void MenuForm_Move(object sender, EventArgs e)
         {
             if (mainForm.Visible)
@@ -66,6 +77,7 @@ namespace TemperTestingBayes
         {
             buttonTest.Enabled = parameter;
             buttonInfo.Enabled = parameter;
+            buttonAiTest.Enabled = parameter;
         }
         private void buttonExit_Click(object sender, EventArgs e)
         {
@@ -83,6 +95,6 @@ namespace TemperTestingBayes
             buttonExit.BackColor = Color.DarkRed;
         }
 
-        
+       
     }
 }
