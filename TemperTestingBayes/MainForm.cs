@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
+using Microsoft.Web.WebView2.WinForms;
+using Microsoft.Web.WebView2.Core;
 
 namespace TemperTestingBayes
 {
@@ -93,17 +95,11 @@ namespace TemperTestingBayes
             if (!testIsRunning)
             {
                 panelMain.Controls.Clear();
-                List<Button> infoButtons = GetInfoButtons();
-                //buttonInf.Click += new EventHandler(this.setInfoButtons);                
-                for (int i = 0; i < 4; i++)
-                {
-                    infoButtons[i].Click += (object sender, EventArgs e) =>
-                    showInfo(int.Parse((sender as Button).Name));
-                }
-                foreach (Button bt in infoButtons)
-                {
-                    panelMain.Controls.Add(bt);
-                }
+                WebView2 testPage = new WebView2();
+                testPage.Dock = DockStyle.Fill;
+                
+                testPage.Source = new System.Uri("https://testometrika.com/personality-and-temper/questionnaire-eysenck-pen/");
+                panelMain.Controls.Add(testPage);
             }
         }
 

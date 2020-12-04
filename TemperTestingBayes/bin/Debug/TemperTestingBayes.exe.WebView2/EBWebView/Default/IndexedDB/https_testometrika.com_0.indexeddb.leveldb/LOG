@@ -1,0 +1,7 @@
+2020/12/04-15:07:58.753 336c Reusing MANIFEST D:\Duni\TemperTestingBayes\TemperTestingBayes\bin\Debug\TemperTestingBayes.exe.WebView2\EBWebView\Default\IndexedDB\https_testometrika.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/12/04-15:07:58.754 336c Recovering log #12
+2020/12/04-15:07:58.755 336c Reusing old log D:\Duni\TemperTestingBayes\TemperTestingBayes\bin\Debug\TemperTestingBayes.exe.WebView2\EBWebView\Default\IndexedDB\https_testometrika.com_0.indexeddb.leveldb/000012.log 
+2020/12/04-15:07:59.573 3628 Level-0 table #18: started
+2020/12/04-15:07:59.649 3628 Level-0 table #18: 583 bytes OK
+2020/12/04-15:07:59.770 3628 Delete type=0 #12
+2020/12/04-15:07:59.771 3628 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)
