@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
+using Microsoft.Web.WebView2.WinForms;
+using Microsoft.Web.WebView2.Core;
 
 namespace TemperTestingBayes
 {
@@ -59,10 +61,12 @@ namespace TemperTestingBayes
             if (!testIsRunning)
             {
                 panelMain.Controls.Clear();
+                this.Height = 300;
+                this.Width = 584;
                 Button buttonStart = new Button();
                 buttonStart.Dock = DockStyle.Fill;
                 buttonStart.Height = 50;
-                buttonStart.Text = "НАЧАТЬ ТЕСТ";
+                buttonStart.Text = "START TEST";
                 buttonStart.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
                 buttonStart.Click += new EventHandler(this.testStart);
                 panelMain.Controls.Add(buttonStart);
@@ -74,9 +78,11 @@ namespace TemperTestingBayes
             if (!testIsRunning)
             {
                 panelMain.Controls.Clear();
-                List<Button> infoButtons = GetInfoButtons();               
+                List<Button> infoButtons = GetInfoButtons();
+                this.Height = 300;
+                this.Width = 584;
                 //buttonInf.Click += new EventHandler(this.setInfoButtons);                
-                for(int i = 0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     infoButtons[i].Click += (object sender, EventArgs e) => 
                     showInfo(int.Parse((sender as Button).Name));
@@ -93,17 +99,15 @@ namespace TemperTestingBayes
             if (!testIsRunning)
             {
                 panelMain.Controls.Clear();
-                List<Button> infoButtons = GetInfoButtons();
-                //buttonInf.Click += new EventHandler(this.setInfoButtons);                
-                for (int i = 0; i < 4; i++)
-                {
-                    infoButtons[i].Click += (object sender, EventArgs e) =>
-                    showInfo(int.Parse((sender as Button).Name));
-                }
-                foreach (Button bt in infoButtons)
-                {
-                    panelMain.Controls.Add(bt);
-                }
+                WebView2 testPage = new WebView2();
+                testPage.Dock = DockStyle.Fill;
+                this.Height = 450;
+                this.Width = 584;
+                //https://www.idrlabs.com/pen-personality/test.php
+                //https://testometrika.com/personality-and-temper/questionnaire-eysenck-pen/
+                //https://psytests.org/eysenck/epiA-run.html
+                testPage.Source = new System.Uri("https://www.idrlabs.com/pen-personality/test.php");
+                panelMain.Controls.Add(testPage);
             }
         }
 
@@ -123,13 +127,13 @@ namespace TemperTestingBayes
                 b.Width = panelMain.Width/4;                
                 b.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             }
-            infoButtons[0].Text = "Меланхолик";
+            infoButtons[0].Text = "Melancholic";
             infoButtons[0].Name = "1";
-            infoButtons[1].Text = "Холерик";
+            infoButtons[1].Text = "Choleric";
             infoButtons[1].Name = "2";
-            infoButtons[2].Text = "Сангвиник";
+            infoButtons[2].Text = "Sanguine";
             infoButtons[2].Name = "3";
-            infoButtons[3].Text = "Флегматик";
+            infoButtons[3].Text = "Phlegmatic";
             infoButtons[3].Name = "4";
             return infoButtons;
         }
@@ -149,7 +153,7 @@ namespace TemperTestingBayes
 
             Button backButton = new Button();
             backButton.Dock = DockStyle.Bottom;
-            backButton.Text = "Назад";
+            backButton.Text = "Back";
             backButton.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             backButton.Height = 30;
             backButton.Click += (object sender, EventArgs e) => setInfoPanel();
@@ -157,37 +161,30 @@ namespace TemperTestingBayes
             {
                 case 1:
                     {
-                        labelTitle.Text = "Меланхолик";
-                        labelResult.Text = "Меланхолик является человеком с высокой чувствительностью " +
-                            "и низким уровнем реактивности. Высокая чувствительность нередко " +
-                            "приводит к тому, что даже незначительный повод может стать " +
-                            "причиной слёз.";
+                        labelTitle.Text = "Melancholic";
+                        labelResult.Text = "The Perfectionist."+
+                            "Sensitive, thoughtful, quiet.";
                         break;
                     }
                 case 2:
                     {
-                        labelTitle.Text = "Холерик";
-                        labelResult.Text = "Холерик не особо чувствителен, обладает " +
-                            "высокой активностью и реактивностью, причём, реактивность " +
-                            "доминирует, отчего он вспыльчив, нетерпелив, несдержан, необуздан. ";
+                        labelTitle.Text = "Choleric";
+                        labelResult.Text = "The Natural Leader."+
+                            "Determined, energetic, goal - oriented.";
                         break;
                     }
                 case 3:
                     {
-                        labelTitle.Text = "Сангвиник";
-                        labelResult.Text = "Сангвиник – это человек с высокой реактивностью, " +
-                            "находящейся наравне с активностью. Для него характерна живая " +
-                            "мимика, богатство жестов, быстрый отклик на внешние обстоятельства, " +
-                            "лёгкость при переключении внимания. ";
+                        labelTitle.Text = "Sanguine";
+                        labelResult.Text = "The Life of the Party." +
+                            "Enthusiastic, fun - loving, outgoing.";
                         break;
                     }
                 case 4:
                     {
-                        labelTitle.Text = "Флегматик";
-                        labelResult.Text = "Для флегматика характерна высокая активность, " +
-                            "которая доминирует над низкой реактивностью. Он малочувствителен" +
-                            " и мало эмоционален. Внешние раздражители оказывают на " +
-                            "него очень слабое воздействие.";
+                        labelTitle.Text = "Phlegmatic";
+                        labelResult.Text = "The Peacemaker." +
+                            "Easy - going, calm, chill.";
                         break;
                     }
             }
@@ -200,7 +197,7 @@ namespace TemperTestingBayes
         private void testStart(object sender, EventArgs e)
         {
             testIsRunning = true;
-            MessageBox.Show("Нажмите на качество, которое больше всего вам подходит");       
+            MessageBox.Show("Choose the quality, that suits you best");       
             testProcess();
         }
 
@@ -259,7 +256,7 @@ namespace TemperTestingBayes
             Label labelTitle = new Label();
             labelTitle.Location = new Point(60, 60);
             labelTitle.Size = new Size(220, 25);
-            labelTitle.Text = "ВАШ РЕЗУЛЬТАТ: ";
+            labelTitle.Text = "YOUR RESULT: ";
             labelTitle.Font = new Font("Century Gothic", 15F, FontStyle.Bold);
             panelMain.Controls.Add(labelTitle);
 
@@ -268,10 +265,10 @@ namespace TemperTestingBayes
             labelResult.Size = new Size(250, 150);
             labelResult.Font = new Font("Century Gothic", 15F, FontStyle.Bold);
             labelResult.Text += 
-                "Меланхолик - " + Math.Round(prediction[0]*100, 2).ToString() + "%;\n" +
-                "Холерик    - " + Math.Round(prediction[1]*100, 2).ToString() + "%;\n" +
-                "Сангвиник  - " + Math.Round(prediction[2]*100, 2).ToString() + "%;\n" +
-                "Флегматик  - " + Math.Round(prediction[3]*100, 2).ToString() + "%;\n";
+                "Melancholic - " + Math.Round(prediction[0]*100, 2).ToString() + "%;\n" +
+                "Choleric    - " + Math.Round(prediction[1]*100, 2).ToString() + "%;\n" +
+                "Sanguine  - " + Math.Round(prediction[2]*100, 2).ToString() + "%;\n" +
+                "Phlegmatic - " + Math.Round(prediction[3]*100, 2).ToString() + "%;\n";
             panelMain.Controls.Add(labelResult);
 
             
